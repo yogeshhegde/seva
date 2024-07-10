@@ -24,7 +24,7 @@ var docker_browser_path = "ghcr.io/texasinstruments/seva-browser:" + docker_brow
 // Link to Repository which has docker-compose file for each demo 
 var store_url = "https://raw.githubusercontent.com/TexasInstruments/seva-apps/main"
 
-var addr = flag.String("addr", "0.0.0.0:8000", "http service address")
+var addr = flag.String("addr", "0.0.0.0:8007", "http service address")
 var no_browser = flag.Bool("no-browser", false, "do not launch browser")
 var docker_browser = flag.Bool("docker-browser", false, "force use of docker browser")
 var http_proxy = flag.String("http_proxy", "", "use to set http proxy")
@@ -77,7 +77,7 @@ func launch_browser() {
 	if *docker_browser {
 		go launch_docker_browser()
 	} else {
-		err := open.Start("http://localhost:8000/#/")
+		err := open.Start("http://localhost:8007/#/")
 		if err != nil {
 			log.Println("Host browser not detected, trying to load & launch seva-browser packaged in default image")
 			go launch_docker_browser()
@@ -99,7 +99,7 @@ func launch_docker_browser() {
 		"-v", xdg_runtime_dir+":/tmp",
 		"-u", "user",
 		"ghcr.io/texasinstruments/seva-browser:"+docker_browser_tag,
-		"http://localhost:8000/#/",
+		"http://localhost:8007/#/",
 	)
 	output_strings := strings.Split(strings.TrimSpace(string(output)), "\n")
 	container_id_list[0] = output_strings[len(output_strings)-1]

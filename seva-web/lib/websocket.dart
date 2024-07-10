@@ -7,7 +7,7 @@ import 'url_builder.dart';
 // setup the websocket
 final host_name = html.window.location.hostname;
 var channel = WebSocketChannel.connect(
-  Uri.parse('ws://${host_name}:8000/ws'),
+  Uri.parse('ws://${host_name}:8007/ws'),
 );
 Stream stream = channel.stream.asBroadcastStream();
 
