@@ -43,8 +43,8 @@ amd64/x86_64.
 
 Access the web interface using either:
 
-- The on device interface with `http://localhost/`
-- The remote interface with `http://<device-ip-or-hostname>/`
+- The on device interface with `http://localhost:8007/`
+- The remote interface with `http://<device-ip-or-hostname>:8007/`
 
 The store page is currently set to use the locally hosted design gallery page
 provided by the [seva-design-gallery
@@ -72,7 +72,7 @@ found, the command is ignored. If it is found then the command is send to
 seva-launcher instructing it to fetch the associated files.
 
 The result of this fetch is then relayed back to the web interface through a
-websocket at `http://localhost:8000/ws`. Seva Control Center can only interact
+websocket at `http://localhost:8007/ws`. Seva Control Center can only interact
 with seva-launcher in this manner.
 
 ### Why is this so complicated?
