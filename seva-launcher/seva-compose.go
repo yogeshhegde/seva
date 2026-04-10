@@ -41,7 +41,12 @@ type Containers []struct {
 
 func start_app(command WebSocketCommand) WebSocketCommand {
 	log.Println("Starting selected app")
+
 	cmd := exec.Command(docker_compose, "-p", "seva-launcher", "up", "-d")
+	if docker_compose == "docker" {
+		cmd = exec.Command(docker_compose, "compose", "-p", "seva-launcher", "up", "-d")
+	} 
+
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		log.Println("Failed to start selected app!")
